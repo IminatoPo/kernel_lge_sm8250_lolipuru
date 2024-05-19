@@ -2237,6 +2237,10 @@ static int es9218p_sabre_bypass2hifi(void)
 	es9218_set_avc_volume(g_es9218_priv->i2c_client, g_avc_volume);                 // set analog volume control, must happen before amp start // 1113
 #endif
 
+    es9218p_sabre_amp_start(g_es9218_priv->i2c_client, g_headset_type);             // move to HiFi mode
+
+    es9218_power_state = ESS_PS_HIFI;
+
     pr_info("%s() : exit. state = %s\n", __func__, power_state[es9218_power_state]);
 
     return 0;
